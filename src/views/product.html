@@ -1,0 +1,36 @@
+<%- include('partials/page-start.html') %>
+<main>
+  <h2><%= subtitle %></h2>
+  <section>
+    <% if (values && values._id) { %>
+    <span>Id de la tarea: <%= values._id %></span>
+    <% } %>
+    <article class="card">
+      <div class="card-body">
+        <form method="POST" action="<%= values && values._id ? '/edit/' + values._id : '/new' %>">
+          <label for="name">Título:</label>
+          <input type="text" name="name" value="<%= values ? values.name : '' %>" />
+          <% if (errors && errors.name) { %>
+          <p style="color:red;"><%= errors.name %></p>
+          <% } %>
+
+          <label for="price">Precio:</label>
+          <input type="text" name="price" value="<%= values ? values.price : '' %>" />
+          <% if (errors && errors.price) { %>
+          <p style="color:red;"><%= errors.price %></p>
+          <% } %>
+          <div class="tag-selector">
+            <% ['work', 'lifestyle', 'motor', 'mobile'].forEach(t => { %>
+            <label>
+              <input type="checkbox" name="tags" value="<%= t %>" <%= values && values.tags && values.tags.includes(t) ? 'checked' : '' %>>
+              <%= t %>
+            </label>
+            <% }) %>
+          </div>
+
+          <button type="submit">Guardar</button>
+        </form>
+    </article>
+  </section>
+</main>
+<%- include('partials/page-end.html') %>

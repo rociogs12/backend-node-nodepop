@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "69f4dcf1b53c43bdf151b412",
+    "name": "Bicicleta de montaña?????",
+    "owner": "Rocío",
+    "price": 250,
+    "tags": [
+      "lifestyle",
+      "motor"
+    ]
+  },
+  {
+    "id": null,
+    "name": "ROCÍO GONZÁLEZ SÁNCHEZ",
+    "price": 20,
+    "owner": "hola",
+    "tags": []
+  }
+]

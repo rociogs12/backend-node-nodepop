@@ -1,0 +1,85 @@
+<%- include('partials/page-start.html') %>
+
+<main class="layout">
+  <section class="filters">
+    <h2><%= subtitle %></h2>
+    <form action="/" method="GET">
+
+      <!-- Nombre -->
+      <input type="text" name="name" placeholder="Buscar por nombre..." value="<%= query.name || '' %>" />
+
+      <!-- Tags -->
+      <div class="tag-selector">
+        <p>Categoría:</p>
+
+        <% ['work', 'lifestyle', 'motor', 'mobile'].forEach(t => { %>
+        <label class="tag-btn">
+          <input type="checkbox" name="tags" value="<%= t %>" <%= query.tags && (Array.isArray(query.tags) 
+              ? query.tags.includes(t) 
+              : query.tags === t) ? 'checked' : '' %>>
+          <span><%= t.charAt(0).toUpperCase() + t.slice(1) %></span>
+        </label>
+        <% }) %>
+
+      </div>
+
+      <!-- Precio -->
+      <input type="number" name="priceMin" placeholder="Mín €" value="<%= query.priceMin || '' %>">
+
+      <input type="number" name="priceMax" placeholder="Máx €" value="<%= query.priceMax || '' %>">
+
+      <button type="submit">Aplicar filtros</button>
+
+    </form>
+  </section>
+
+  <section class="product-list">
+    <% if (products.length > 0) { %>
+    <div class="products-grid"">
+      <% products.forEach(product => { %>
+      <article class="product-card">
+        <h3><%= product.name %></h3>
+        <p><strong>Precio:</strong> <%= product.price %>€</p>
+        <p><strong>Dueño:</strong> <%= product.owner %></p>
+        <p>
+          <strong>Tags:</strong>
+          <% product.tags.forEach(tag => { %>
+          <span class="badge" style="background: #eee; padding: 2px 5px; font-size: 0.8em"><%= tag %></span>
+          <% }) %>
+        </p>
+        <% if (user && product.owner === user.username) { %>
+        <div class="actions">
+          <a href="/edit/<%= product._id %>">Editar</a>
+          <form method="POST" action="/delete/<%= product._id %>">
+            <button>Borrar</button>
+          </form>
+        </div>
+        <% } %>
+
+      </article>
+      <% }) %>
+    </div>
+    <% } else { %>
+    <p>No se han encontrado productos.</p>
+    <% } %>
+    <div>
+      <% const queryString = (p) => {
+    const params = new URLSearchParams(query);
+    params.set('page', p);
+    return '?' + params.toString();
+  }; %>
+
+      <% if (page > 1) { %>
+      <a href="<%= buildQueryString(query, page - 1) %>">Anterior</a>
+      <% } %>
+
+      <span>Página <%= page %> de <%= totalPages %></span>
+
+      <% if (page < totalPages) { %>
+      <a href="<%= buildQueryString(query, page + 1) %>">Siguiente</a>
+      <% } %>
+    </div>
+  </section>
+</main>
+<%- include('partials/page-end.html') %>
+

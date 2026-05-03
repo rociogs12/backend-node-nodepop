@@ -1,0 +1,230 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BODY GENERAL */
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #4f7f75;
+  color: white;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* MAIN 80% */
+main {
+  flex: 0 0 80%;
+  overflow: hidden; /* evita que rompa el layout */
+}
+
+/* FOOTER 10% */
+footer {
+  flex: 0 0 10%;
+  display: flex;
+  justify-content: center;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #d3d3d3;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  flex: 0 0 10%;
+}
+
+/* TÍTULO */
+header h1 {
+  font-size: 1.8rem;
+}
+
+/* NAV IZQUIERDA */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-left h3 {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.nav-left ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  margin: 0;
+}
+
+/* NAV DERECHA */
+.nav-right ul {
+  list-style: none;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+   ========================= */
+
+.layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* FILTROS 30% */
+.filters {
+  flex: 0 0 30%;
+  max-width: 30%;
+  background: #3a5f57;
+  padding: 20px;
+  border-radius: 10px;
+
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+/* PRODUCTOS 70% */
+.product-list {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* GRID 4x2 */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* CARD */
+.product-card {
+  height: 220px; /* mismo alto siempre */
+
+  background: #3a5f57;
+  border-radius: 10px;
+  padding: 15px;
+
+  overflow: hidden;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.product-card p {
+  margin-bottom: 0.9rem;
+}
+
+/* TAGS */
+.badge {
+  background: #eee;
+  color: #333;
+  padding: 2px 6px;
+  font-size: 0.8em;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+/* ACTIONS SIEMPRE ABAJO */
+.product-card .actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* BOTONES */
+.product-card .actions a,
+.product-card .actions button {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* INPUTS */
+input {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* BOTONES GENERALES */
+button {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background: #2f4f49;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #244039;
+}
+
+/* TAGS FILTER */
+.tag-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-list > div:last-child {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+
+  position: sticky;
+  bottom: 0;
+  background: #4f7f75;
+  padding: 10px 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+/* LOGIN */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+}
